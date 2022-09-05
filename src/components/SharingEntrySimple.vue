@@ -21,21 +21,22 @@
   -->
 
 <template>
-	<li class="sharing-entry">
-		<slot name="avatar" />
-		<div v-tooltip="tooltip" class="sharing-entry__desc">
-			<span class="sharing-entry__title">{{ title }}</span>
-			<p v-if="subtitle">
-				{{ subtitle }}
-			</p>
-		</div>
-		<NcActions v-if="$slots['default']"
-			class="sharing-entry__actions"
-			menu-align="right"
-			:aria-expanded="ariaExpandedValue">
-			<slot />
-		</NcActions>
-	</li>
+	<Component>
+		<p>Editavel em files_sharing/src/components/SharingEntrySimple.vue</p>
+		<li class="sharing-entry">
+			<slot name="avatar" />
+			<div v-tooltip="tooltip" class="sharing-entry__desc">
+				<span class="sharing-entry__title">{{ title }}</span>
+				<p v-if="subtitle">
+					{{ subtitle }}
+				</p>
+			</div>
+			<NcActions v-if="$slots['default']" class="sharing-entry__actions" menu-align="right"
+				:aria-expanded="ariaExpandedValue">
+				<slot />
+			</NcActions>
+		</li>
+	</Component>
 </template>
 
 <script>
@@ -93,22 +94,26 @@ export default {
 	display: flex;
 	align-items: center;
 	min-height: 44px;
+
 	&__desc {
 		padding: 8px;
 		line-height: 1.2em;
 		position: relative;
 		flex: 1 1;
 		min-width: 0;
+
 		p {
 			color: var(--color-text-maxcontrast);
 		}
 	}
+
 	&__title {
 		white-space: nowrap;
 		text-overflow: ellipsis;
 		overflow: hidden;
 		max-width: inherit;
 	}
+
 	&__actions {
 		margin-left: auto !important;
 	}

@@ -21,31 +21,21 @@
   -->
 
 <template>
-	<NcMultiselect ref="multiselect"
-		class="sharing-input"
-		:clear-on-select="true"
-		:disabled="!canReshare"
-		:hide-selected="true"
-		:internal-search="false"
-		:loading="loading"
-		:options="options"
-		:placeholder="inputPlaceholder"
-		:preselect-first="true"
-		:preserve-search="true"
-		:searchable="true"
-		:user-select="true"
-		open-direction="below"
-		label="displayName"
-		track-by="id"
-		@search-change="asyncFind"
-		@select="addShare">
-		<template #noOptions>
-			{{ t('files_sharing', 'No recommendations. Start typing.') }}
-		</template>
-		<template #noResult>
-			{{ noResultText }}
-		</template>
-	</NcMultiselect>
+	<Component>
+		<p>Editavel em files_sharing/src/components/SharingInput.vue</p>
+		<NcMultiselect ref="multiselect" class="sharing-input" :clear-on-select="true" :disabled="!canReshare"
+			:hide-selected="true" :internal-search="false" :loading="loading" :options="options"
+			:placeholder="inputPlaceholder" :preselect-first="true" :preserve-search="true" :searchable="true"
+			:user-select="true" open-direction="below" label="displayName" track-by="id" @search-change="asyncFind"
+			@select="addShare">
+			<template #noOptions>
+				{{ t('files_sharing', 'No recommendations. Start typing.') }}
+			</template>
+			<template #noResult>
+				{{ noResultText }}
+			</template>
+		</NcMultiselect>
+	</Component>
 </template>
 
 <script>
@@ -83,7 +73,7 @@ export default {
 		},
 		fileInfo: {
 			type: Object,
-			default: () => {},
+			default: () => { },
 			required: true,
 		},
 		reshare: {
@@ -278,7 +268,7 @@ export default {
 		 *
 		 * @param {...*} args the arguments
 		 */
-		debounceGetSuggestions: debounce(function(...args) {
+		debounceGetSuggestions: debounce(function (...args) {
 			this.getSuggestions(...args)
 		}, 300),
 
@@ -382,26 +372,26 @@ export default {
 		 */
 		shareTypeToIcon(type) {
 			switch (type) {
-			case this.SHARE_TYPES.SHARE_TYPE_GUEST:
-				// default is a user, other icons are here to differenciate
-				// themselves from it, so let's not display the user icon
-				// case this.SHARE_TYPES.SHARE_TYPE_REMOTE:
-				// case this.SHARE_TYPES.SHARE_TYPE_USER:
-				return 'icon-user'
-			case this.SHARE_TYPES.SHARE_TYPE_REMOTE_GROUP:
-			case this.SHARE_TYPES.SHARE_TYPE_GROUP:
-				return 'icon-group'
-			case this.SHARE_TYPES.SHARE_TYPE_EMAIL:
-				return 'icon-mail'
-			case this.SHARE_TYPES.SHARE_TYPE_CIRCLE:
-				return 'icon-circle'
-			case this.SHARE_TYPES.SHARE_TYPE_ROOM:
-				return 'icon-room'
-			case this.SHARE_TYPES.SHARE_TYPE_DECK:
-				return 'icon-deck'
+				case this.SHARE_TYPES.SHARE_TYPE_GUEST:
+					// default is a user, other icons are here to differenciate
+					// themselves from it, so let's not display the user icon
+					// case this.SHARE_TYPES.SHARE_TYPE_REMOTE:
+					// case this.SHARE_TYPES.SHARE_TYPE_USER:
+					return 'icon-user'
+				case this.SHARE_TYPES.SHARE_TYPE_REMOTE_GROUP:
+				case this.SHARE_TYPES.SHARE_TYPE_GROUP:
+					return 'icon-group'
+				case this.SHARE_TYPES.SHARE_TYPE_EMAIL:
+					return 'icon-mail'
+				case this.SHARE_TYPES.SHARE_TYPE_CIRCLE:
+					return 'icon-circle'
+				case this.SHARE_TYPES.SHARE_TYPE_ROOM:
+					return 'icon-room'
+				case this.SHARE_TYPES.SHARE_TYPE_DECK:
+					return 'icon-deck'
 
-			default:
-				return ''
+				default:
+					return ''
 			}
 		},
 
@@ -416,7 +406,7 @@ export default {
 			if (result.value.shareType === this.SHARE_TYPES.SHARE_TYPE_USER && this.config.shouldAlwaysShowUnique) {
 				subtitle = result.shareWithDisplayNameUnique ?? ''
 			} else if ((result.value.shareType === this.SHARE_TYPES.SHARE_TYPE_REMOTE
-					|| result.value.shareType === this.SHARE_TYPES.SHARE_TYPE_REMOTE_GROUP
+				|| result.value.shareType === this.SHARE_TYPES.SHARE_TYPE_REMOTE_GROUP
 			) && result.value.server) {
 				subtitle = t('files_sharing', 'on {server}', { server: result.value.server })
 			} else if (result.value.shareType === this.SHARE_TYPES.SHARE_TYPE_EMAIL) {
@@ -533,6 +523,7 @@ export default {
 				background-repeat: no-repeat;
 				background-position: center;
 				background-color: var(--color-text-maxcontrast) !important;
+
 				div {
 					display: none;
 				}

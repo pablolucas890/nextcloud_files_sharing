@@ -48,6 +48,7 @@ Vue.use(VueClipboard)
 const View = Vue.extend(SharingTab)
 let TabInstance = null
 
+// Aqui aplica a aba do menu de detalhes
 window.addEventListener('DOMContentLoaded', function() {
 	if (OCA.Files && OCA.Files.Sidebar) {
 		OCA.Files.Sidebar.registerTab(new OCA.Files.Sidebar.Tab({
