@@ -38,6 +38,8 @@ import escapeHTML from 'escape-html'
 import { Type as ShareTypes } from '@nextcloud/sharing'
 import { getCapabilities } from '@nextcloud/capabilities'
 
+// Habilita o icone de "share" na lista de arquivos
+// Contem toda logica de listagem de compartilhamento
 (function() {
 
 	_.extend(OC.Files.Client, {
@@ -71,11 +73,15 @@ import { getCapabilities } from '@nextcloud/capabilities'
 		 *
 		 * @param {OCA.Files.FileList} fileList file list to be extended
 		 */
+
+		// File List = Lista de Arquivos
+
 		attach: function(fileList) {
 			// core sharing is disabled/not loaded
 			if (!getCapabilities().files_sharing?.api_enabled) {
 				return
 			}
+			// Se o arquivo e o binario da lixeira ou publico ele retorna
 			if (fileList.id === 'trashbin' || fileList.id === 'files.public') {
 				return
 			}
